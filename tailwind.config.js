@@ -9,50 +9,62 @@ export default {
       xl: "1280px",
       "2xl": "1536px",
     },
-    colors: {
-      /* brown: "#53423e",
-      lightBrown: "#645550",
-      darkBrown: "#2d2421",
-      black: "#1e1917",
-      white: "#f1e1d9",
-      cyan: "#5fcfdd",
-      lightCyan: "#88e5f0",
-      darkCyan: "#009fb3",
-      orange: "#f0a94f",
-      lightOrange: "#fac27b",
-      darkOrange: "#d28422",
-      grey: "#626965",
-      lightGrey: "#8a938e",
-      darkGrey: "#3f4441",
-       */
-      brown: "#53423e",
-      lightBrown: "#645550",
-      darkBrown: "#2c2523",
-      black: "#1e1917",
-      white: "#f1e1d9",
-      cyan: "#15d1e9",
-      lightCyan: "#88e5f0",
-      darkCyan: "#009fb3",
-      orange: "#fb9718",
-      lightOrange: "#fac27b",
-      darkOrange: "#d28422",
-      grey: "#626965",
-      lightGrey: "#978580",
-      darkGrey: "#3f4441",
-    },
     extend: {
+      colors: {
+        night: "#05080a",      // page bg (dark)
+        pine: "#0b1110",       // surface (dark)
+        card: "#0e1513",       // card (dark)
+        cream: "#f4f5f3",      // page bg (light)
+        paper: "#ffffff",      // surface (light)
+        accent: "#34d399",     // mint glow accent
+        accentdeep: "#0e9f6e",
+        ink: "#0c1210",        // text (light mode)
+        fog: "#e9efec",        // text (dark mode)
+        muteddark: "#8fa098",  // secondary text (dark)
+        mutedlight: "#5b6663", // secondary text (light)
+      },
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"SF Pro Display"',
+          '"SF Pro Text"',
+          "Inter",
+          '"Segoe UI"',
+          "sans-serif",
+        ],
+      },
       boxShadow: {
-        cyanShadow: "0px 0px 20px 0px rgba(94, 206, 220, 0.5)",
-        cyanBigShadow: "10px 10px 1000px 500px rgba(94, 206, 220, 0.3)",
-        cyanMediumShadow: "10px 10px 200px 150px rgba(94, 206, 220, 0.5)",
-        orangeBigShadow: "10px 10px 10000px 500px rgba(240, 169, 79, 0.3)",
-        orangeMediumShadow: "10px 10px 2000px 150px rgba(240, 169, 79, 0.5)",
+        glow: "0 0 24px 0 rgba(52, 211, 153, 0.35)",
+        card: "0 20px 60px -20px rgba(0, 0, 0, 0.55)",
+      },
+      keyframes: {
+        floaty: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        drift: {
+          "0%": { transform: "translate(0, 0)" },
+          "33%": { transform: "translate(24px, -18px)" },
+          "66%": { transform: "translate(-18px, 14px)" },
+          "100%": { transform: "translate(0, 0)" },
+        },
+        "spin-slow": {
+          to: { transform: "rotate(360deg)" },
+        },
+      },
+      animation: {
+        floaty: "floaty 7s ease-in-out infinite",
+        drift: "drift 18s ease-in-out infinite",
+        "spin-slow": "spin-slow 24s linear infinite",
       },
     },
-    fontFamily: {
-      body: ["Josefin Sans"],
-      special: ['"Nunito"'],
-    },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      // `light:` variant applies when <html> carries the .light class.
+      // Base styles are the dark theme; light: overrides switch to light mode.
+      addVariant("light", ".light &");
+    },
+  ],
 };

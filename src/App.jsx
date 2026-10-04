@@ -1,31 +1,33 @@
-import AboutMeMain from "./components/aboutMeSection/AboutMeMain";
-import ContactMeMain from "./components/contactMeSection/ContactMeMain";
-import ExperienceMain from "./components/experienceSection/ExperienceMain";
-import FooterMain from "./components/footer/FooterMain";
-import HeroGradient from "./components/heroSection/HeroGradient";
-import HeroMain from "./components/heroSection/HeroMain";
-import NavbarMain from "./components/navbar/NavbarMain";
-import ProjectsMain from "./components/projectsSection/ProjectsMain";
-import SkillsMain from "./components/skillsSection/SkillsMain";
-import SubSkills from "./components/skillsSection/SubSkills";
-import SubHeroMain from "./components/subHeroSection/SubHeroMain";
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import About from "./components/About.jsx";
+import Experience from "./components/Experience.jsx";
+import Skills from "./components/Skills.jsx";
+import Certifications from "./components/Certifications.jsx";
+import Projects from "./components/Projects.jsx";
+import Contact from "./components/Contact.jsx";
+import Chatbot from "./components/Chatbot.jsx";
+import FloatingLogos from "./components/FloatingLogos.jsx";
+import Footer from "./components/Footer.jsx";
+import ScrollProgress from "./components/ScrollProgress.jsx";
 
-function App() {
+export default function App() {
   return (
-    <main className="font-body text-white relative overflow-hidden">
-      <NavbarMain />
-      <HeroMain />
-      <HeroGradient />
-      <SubHeroMain />
-      <AboutMeMain />
-      <SkillsMain />
-      <SubSkills />
-      <ExperienceMain />
-      <ProjectsMain />
-      <ContactMeMain />
-      <FooterMain />
-    </main>
+    <div className="min-h-screen bg-night text-fog light:bg-cream light:text-ink overflow-x-clip">
+      <ScrollProgress />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Certifications />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+      <FloatingLogos />
+      <Chatbot />
+    </div>
   );
 }
-
-export default App;
